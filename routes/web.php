@@ -12,5 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+//登录页面
+Route::get("Index/login","Index\\LoginController@login");//登录页面
+Route::post("Index/login_do","Index\\LoginController@login_do");//登录页面
+Route::get("Index/quit","Index\\LoginController@quit");//登录页面

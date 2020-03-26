@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    QQREAD
+                    <span style="color:red">起点中文网</span>
                 </div>
 
                 <div class="links">

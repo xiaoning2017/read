@@ -4,34 +4,44 @@ namespace App\Http\Controllers\Index;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Model\LoginModel;
+use Illuminate\Validation\Rule;
+use DB;
+use BaconQrCode\Encoder\QrCode;
 class LoginController extends Controller
 {
     ////登录控制器  登录页面
     public function login(){
     	return view('Index.login');
     }
-    public function login_do(Request $request){        
-        
+    public function login_do(Request $request){
         $info = $request->all();
-        // var_dump($info);
-        $data = AdminModel::where(['user_name'=>$info['user_name']])->first();
-        // dd($data);
-        if(!empty($data)){
-            $pwd = decrypt($data->user_pwd);//解密后的密码
-            if($info['user_pwd'] != $pwd){
-                return redirect('login/login')->with('msg','看看是不是密码错了？');
-            }else{
-                session(['user'=>$data]);
-                return redirect('admin/index');
-            }
+        // $res=LoginModel::where('user_tel',$info['user_tel'] and 'user_pwd', $info['user_pwd'])->first();
+        // $res =LoginModel::create($info);
+        $res = DB::select("select * from login_tel where user_tel='$info[user_tel]' and user_pwd='$info[user_pwd]' limit 1");
+        if($res){
+            
+            return redirect('/');
         }else{
-            return redirect('login/login')->with('msg','不存在此用户。不允许访问');
-        }	
+            echo "登录失败";die;
+            // die('登录失败');
+        }       
+    }
+    /**点击扫码登录 */
+    public function qrcode(Request $request){
+        $url = storage_path('app/public/phpqrcode.php');
+        include($url);
+        // include '/phpqrcode.php';
+        //区分是谁登录的，生成一个唯一的用户标识 
+        $uid = uniqid();
+        echo $uid;die;
+        $obj = new QRcode();
+
+        // return view('Index.qrcode');
     }
     /*点击退出*/ 
     public function quit(){
         session(['user'=>null]);
-        return redirect('login/login');
+        return redirect('index/login');
     }
 }

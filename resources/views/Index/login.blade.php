@@ -24,30 +24,46 @@
 </head>
 
 <body class="gray-bg">
+    
 
     <div class="middle-box text-center loginscreen  animated fadeInDown">
-        <div>
+    
+        <div >
             <div>
                 <h1 class="logo-name">H</h1>
             </div>
             <h3>你给我翻译翻译</h3>
             <h3>什么叫惊喜</h3>
+            <form class="m-t" role="form" action="{{url('index/login_do')}}" method="post">
 
-            <form class="m-t" role="form" action="{{url('login/login_do')}}" method="post">
+            <!-- 这是验证  登录不用只用验证数据库是否存在即可
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+                </ul>
+                </div>
+            @endif -->
                 <div class="form-group">
-                    <input type="text" name="user_name" class="form-control" placeholder="用户名" >
+                    <input type="text" name="user_tel" class="form-control" placeholder="手机号码" >
+                    <!-- <p style="color:red">{{$errors->first('user_tel')}}</p> -->
                 </div>
                 <div class="form-group">
                     <input type="password" name="user_pwd" class="form-control" placeholder="密码" >
+                    <!-- <p style="color:red">{{$errors->first('user_pwd')}}</p> -->
                 </div>
-                <div class="form-group input-group-sm">
+                <!-- <div class="form-group input-group-sm">
                     <input type="test" name=""  width="30%"  class="form-control" >
                    <input type="button" value="获取验证码" class="btn btn-info" id="code">
-                </div>
+                </div> -->
                 <button type="submit" class="btn btn-primary block full-width m-b">登 录</button>
 
 
-                <p class="text-muted text-center"><a href="#"><small>忘记密码了？|自己想办法</small></a> 
+                <p class="text-muted text-center"><a href="#"><small>忘记密码了？| 自己想办法</small></a> 
+                </p>
+                <p class="text-muted text-center"><a href="{{ url('index/qrcode')}}"><small>点击扫码登录</small></a> 
                 </p>
                 <p style="color:red" align="center">{{session('msg')}}</p>
 
@@ -66,19 +82,5 @@
 
 </html>
 <script type="text/javascript">
-   $(document).on("click","#code",function(){
-    var user_pwd = $("[name='user_pwd']").val();
-     var user_name = $("[name='user_name']").val();
-
-    $.ajax({
-            url:"{{url('admin/code')}}",//请求的地址
-            type:"GET",//请求的类型get post
-            data:{user_name:user_name,user_pwd:user_pwd},//传输的数据
-            dataType:"json",//返回的数据类型
-            success:function(res){  //成功的执行方法
-                console.log(res);
-            }
-
-        })
-   })
+  
 </script>

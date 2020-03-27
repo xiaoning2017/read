@@ -49,6 +49,7 @@
             color: #50a3a2;
         }
         .container input[type='submit'] {
+            margin-top: -30px;
             font-size: 16px;
             letter-spacing: 2px;
             color: #666666;
@@ -59,6 +60,16 @@
         }
         .p {
             margin-left:6.7cm;
+        }
+        #validatecode {
+            width: 120px;
+            margin-left:6.7cm;
+        }
+        #btn {
+            width: 100px;
+            margin-top: -68px;
+            margin-right: 6.9cm;
+            color: #8B008B;
         }
         .container input[type='submit']:hover {
             cursor: pointer;
@@ -214,11 +225,12 @@
             }
         }
     </style>
+    
 </head>
 <body>
     <div class="wrap">
     <div class="container">
-        <h1 style="color: white; margin: 0; text-align: center">Sign up</h1>
+        <h2 style="color: white; margin: 0; text-align: center">Sign up</h2>
         <form action="{{url('index/reg_do')}}" method="post">
             @if ($errors->any())
                 <div class="alert alert-danger">
@@ -229,12 +241,15 @@
                 </ul>
                 </div>
             @endif
-        <label><input type="text" name="user_tel" placeholder="Your phoneNumber"/></label>
+        <label><input type="text" name="user_tel" placeholder="Your phoneNumber" id="user_tel" /></label>
         <p style="color:red" class="p">{{$errors->first('user_tel')}}</p>
         <label><input type="password" name="user_pwd" placeholder="password" /></label>
         <p style="color:red" class="p">{{$errors->first('user_pwd')}}</p>
         <label><input type="password" name="password" placeholder="Please confirm your password" /></label>
-        <p style="color:red" class="p">{{$errors->first('password')}}</p>        
+        <p style="color:red" class="p">{{$errors->first('password')}}</p> 
+        <label><input class="code" placeholder="验证码" id="validatecode" type="text">
+        <input class="code" onclick='duanxin()' value="获取验证码" id="btn" type="button">
+          </label>    
             <input type="submit" value="Sign up"/>
       
         </form>
@@ -254,3 +269,31 @@
 </div>
 </body>
 </html>
+
+<script src='{{ asset("/static/js/jquery-3.2.1.min.js") }}'></script>
+<script>      
+    function duanxin() {
+//获取手机ID
+// alert('haha1');return;//查看是否引入js
+        var iphone = $("#user_tel").val();
+        alert(iphone);return;
+        $.ajax({
+            url: 'index/reg_do',
+            data: {'user_tel': iphone},
+            type: "GET",
+            dataType: "Json",
+            success: function (msg) {
+                if (msg['stat'] == '100') {
+                    alert('短信发送成功了');
+                } else {
+                    alert('短信发送失败了');
+                }
+ 
+            }
+        });
+    }
+
+
+
+
+</script>       

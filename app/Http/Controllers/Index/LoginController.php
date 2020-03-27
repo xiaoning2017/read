@@ -34,6 +34,7 @@ class LoginController extends Controller
         // include '/phpqrcode.php';
         //区分是谁登录的，生成一个唯一的用户标识 
         $uid = uniqid();
+         
         echo $uid;die;
         $obj = new QRcode();
 

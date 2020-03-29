@@ -26,7 +26,7 @@ class Rule extends FormRequest
     {
         return [
             'user_tel'=>array(
-                'required','regex:/^1[345789][0-9]{9}$/','between:11,11',
+                'required','regex:/^1[345789][0-9]{9}$/','between:11,11','unique:login_tel',
             ),
             
             'user_pwd' => 'required|numeric',
@@ -43,6 +43,7 @@ class Rule extends FormRequest
     */
         public function messages(){
             return [
+                'user_tel.unique' =>'此电话已存在，请更换号码',
                 'user_tel.required' => '手机不能为空，并输入正确手机号',
                 'user_tel.regex'=>'填1/345789开头的11位电话',
                 'user_pwd.required' => '密码不能为空，必须是数字',

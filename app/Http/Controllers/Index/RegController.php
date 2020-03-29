@@ -62,4 +62,9 @@ class RegController extends Controller
         curl_close($ch);//8.关闭
         return $tmpInfo;
     }
+
+    /**登陆成功后首页 */
+    public function index(){
+        return view('Index/index');
+    }
 }

@@ -20,18 +20,18 @@ class LoginController extends Controller
         
         // $res =LoginModel::create($info);
         // $res = DB::select("select * from login_tel where user_tel='$info[user_tel]' and user_pwd='$info[user_pwd]' limit 1");
-        $a = $res->user_tel;
+        // $a = $res->user_tel;
        
         if(!empty($res)){ 
             if($info['user_pwd'] != $res->user_pwd){
                 return redirect('index/login')->with('msg','看看是不是密码错了？');
             }else{
-                session(['user'=>$a]);
+                session(['user'=>$res['user_tel']]);
                 return redirect('index/index');
             }
         }else{
             // 都能用echo "<script>alert('用户名错了，请去注册，正在返回首页...');location.href='/'</script>";die;
-            return redirect('index/login')->with('msg','用户名错了');
+            return redirect('index/login')->with('msg','手机号错了');
             
         }       
     }

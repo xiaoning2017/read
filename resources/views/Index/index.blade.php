@@ -157,24 +157,32 @@
 		<div id="menu">
 			<a href="#">文学</a>
 			<a href="#">生活</a>
-			<a href="#">计算机</a>
-			<a href="#">外语</a>
-			<a href="#">经管</a>
-			<a href="#">励志</a>
-			<a href="#">社科</a>
-			<a href="#">学术</a>
-			<a href="#">少儿</a>
-			<a href="#">艺术</a>
-			<a href="#">科技</a>
-			<a href="#">考试</a>
-			<a href="#">生活百科</a>
+			<a href="#" >计算机</a>
+			<a href="#" style="color:red">外语</a>
+			<a href="#" style="color:red">经管</a>
+			<a href="#" style="color:red">励志</a>
+			<a href="#" style="color:red">社会</a>
+			<a href="#" style="color:red">学术</a>
+			<a href="#" style="color:red">少儿</a>
+			<a href="#" style="color:red">艺术</a>
+			<a href="#" style="color:red">科技</a>
+			<a href="#" style="color:red">考试</a>
+			<a href="#" style="color:red">生活百科</a>
 			<a class="all" href="#">全部目录商品</a>
 		</div>
+		<form >
 		<div id="search">
 			<span>Search</span>
-			<input type="text" />
+			<select name="" id="">
+				<option value="" >cate名称</option>
+				<option value="">文学</option>
+				<option value="">生活</option>
+				<option value="">计算机</option>
+			</select>
+			<input type="text" name="book_name" placeholder="只能书名"/>
 			<button>提交</button>
 		</div>
+		</form>
 		<div id="content">
 			<div id="content_top">
 				<span>欢迎大神 ：{{ Session::get('user') }} </span>

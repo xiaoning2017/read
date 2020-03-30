@@ -24,3 +24,5 @@ Route::get("index/register","Index\\RegController@reg");//注册页面
 Route::post("index/reg_do","Index\\RegController@reg_do");//注册页面
 //登陆成功后首页
 Route::get("index/index","Index\RegController@index");//展示页 
+//搜索页面
+Route::get("index/search","Search\SearchController@search");

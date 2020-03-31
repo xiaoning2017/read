@@ -27,7 +27,7 @@ class LoginController extends Controller
                 return redirect('index/login')->with('msg','看看是不是密码错了？');
             }else{
                 session(['user'=>$res['user_tel']]);
-                return redirect('index/index');
+                return redirect('book/index');
             }
         }else{
             // 都能用echo "<script>alert('用户名错了，请去注册，正在返回首页...');location.href='/'</script>";die;

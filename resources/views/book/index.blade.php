@@ -173,13 +173,13 @@
 		<form >
 		<div id="search">
 			<span>Search</span>
-			<select name="" id="">
-				<option value="" >cate名称</option>
+			<select name="cate_name" id="">
+				<option value="" >--请选择cate名称</option>
 				<option value="">文学</option>
 				<option value="">生活</option>
 				<option value="">计算机</option>
 			</select>
-			<input type="text" name="book_name" placeholder="只能书名"/>
+			<input type="text" name="book_name"  value="{{ $query['book_name']??'' }}" placeholder="只能书名"/>
 			<button>提交</button>
 		</div>
 		</form>
@@ -189,9 +189,9 @@
 			</div>
 			
 			<div id="content_bottom">
-				<h1>商品目录</h1>
+				<h1>书目录</h1>
 				<hr/>
-				<h1>计算机类</h1>
+				<h1>书分类</h1>
 				<span>共n种商品</span>
 				<hr/>
 				<div id="productlist">

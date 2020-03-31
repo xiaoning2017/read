@@ -158,7 +158,7 @@
 			<a href="#">文学</a>
 			<a href="#">生活</a>
 			<a href="#" >计算机</a>
-			<a href="#" style="color:red">外语</a>
+			<a href="#" style="color:red">作者申请</a>
 			<a href="#" style="color:red">经管</a>
 			<a href="#" style="color:red">励志</a>
 			<a href="#" style="color:red">社会</a>

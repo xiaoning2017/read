@@ -54,7 +54,7 @@
 		text-align: right;
 		
 	}
-	#search button{
+	#search input[type='submit']{
 		/* margin-top: 5px; */
 		margin-right: 250px;
 		margin-bottom: -4px;
@@ -170,17 +170,18 @@
 			<a href="#" style="color:red">生活百科</a>
 			<a class="all" href="#">全部目录商品</a>
 		</div>
-		<form >
+		<form action="{{url('cate/store')}}" method="post"  enctype="multipart/form-data">
 		<div id="search">
 			<span>Search</span>
-			<select name="cate_name" id="">
-				<option value="" >--请选择cate名称</option>
-				<option value="">文学</option>
-				<option value="">生活</option>
-				<option value="">计算机</option>
+			<select name="" id="">
+                <option value="">--请选择</option>
+            @foreach($cateData as $v)	
+				<option value="{{$v->id}}">{{$v->cate_name}}</option>
+            @endforeach
 			</select>
-			<input type="text" name="book_name"  value="{{ $query['book_name']??'' }}" placeholder="只能书名"/>
-			<button>提交</button>
+			<!-- <input type="text" name="book_name"  value="{{ $query['book_name']??'' }}" placeholder="只能书名"/> -->
+            <input type="submit"value="查询">
+            <!-- <button>提交</button> -->
 		</div>
 		</form>
 		<div id="content">
@@ -199,25 +200,44 @@
 						<img alt="" src="/picture/productlist.gif" width="100%">
 					</div>
 					<div id="booklist">
-						<div class="book">
+                        <table border="1">
+                        <tr align="center">
+                            <td>书名</td>
+                            <td>售价</td>
+                            <td>详情</td>
+                            <td>分类名称</td>
+                        </tr>
+                    @foreach($bookData as $v)
+                    <tr align="center">
+                        <td>{{$v->book_name}}</td>
+                        <td>{{$v->book_price}}</td>                       
+                        <td>{{$v->book_detail}}</td>                       
+                        <td>{{$v->cate_name}}</td>                       
+                        <!-- <td><img src="{{ URL::asset('/picture/101.jpg') }}" width="50" height="50"></td>  -->
+                        <!-- <td><img src="{{ URL::asset('picture/'.$v->book_img) }}" width="50" height="50"></td>   -->    
+                    </tr>
+                    @endforeach
+                        </table>
+						<!-- <div class="book">
 							<div class="bookimg">
 								<img alt="" src="/picture/101.jpg">
 							</div>
 							<div class="bookIntr">
-								<span>书名：xxx</span><br/>
-								<span>售价：xxx</span>
-							</div>
+								<span>书名：{{$v->book_name}}</span><br/>
+								<span>售价：{{$v->book_price}}</span>
+                            </div>
+                            
 						</div>
 						<div class="book">
 							<div class="bookimg">
 								<img alt="" src="/picture/102.jpg">
 							</div>
 							<div class="bookIntr">
-								<span>书名：xxx</span><br/>
-								<span>售价：xxx</span>
+								<span>书名：{{$v->book_name}}</span><br/>
+								<span>售价：{{$v->book_price}}</span>
 							</div>
-						</div>
-						<div class="book">
+						</div> -->
+						<!-- <div class="book">
 							<div class="bookimg">
 								<img alt="" src="/picture/103.jpg">
 							</div>
@@ -261,8 +281,8 @@
 								<span>书名：xxx</span><br/>
 								<span>售价：xxx</span>
 							</div>
-						</div>
-						<div class="book">
+						</div> -->
+						<!-- <div class="book">
 							<div>
 								<img alt="" src="/picture/108.jpg" width="130">
 							</div>
@@ -271,9 +291,12 @@
 								<br>
 								<span>售价:xxx</span>
 							</div>
-						</div>
+						</div> -->
 						<div class="clear"></div>
-						<div id="jumpPage">
+						
+                        
+                    </div>
+                        <div id="jumpPage">
 							<a href="#">上一页</a>
 							<a class="current" href="#">1</a>
 							<a href="#">2</a>
@@ -283,8 +306,7 @@
 							<a href="#">6</a>
 							<a href="#">7</a>
 							<a href="#">下一页</a>
-						</div>
-					</div>
+                        </div>
 				</div>
 			</div>
 		</div>

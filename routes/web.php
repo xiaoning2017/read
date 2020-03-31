@@ -26,6 +26,7 @@ Route::post("index/reg_do","Index\\RegController@reg_do");//注册页面
 
 //商品页面
 Route::prefix('book')->group(function(){
-    Route::get('create','Book\BookController@create');//商品添加
-    Route::get('index','Book\BookController@index');//搜索页面
+    Route::get('create','Book\BookController@create');//作者添加
+    Route::get('index','Book\BookController@index');//主页面
+    Route::get('search','Book\BookController@search');//搜索分类页面
 });

@@ -170,7 +170,7 @@
 			<a href="#" style="color:red">生活百科</a>
 			<a class="all" href="#">全部目录商品</a>
 		</div>
-		<form action="{{url('cate/store')}}" method="post"  enctype="multipart/form-data">
+		<form action="{{url('book/search')}}" method="post"  enctype="multipart/form-data">
 		<div id="search">
 			<span>Search</span>
 			<select name="" id="">

@@ -32,7 +32,9 @@ class BookController extends Controller
         return view('book.index',['bookData'=>$bookData],['cateData'=>$cateData]);
     }
     //搜索分类页面
-    public function search(){
+    public function search(Request $request){
+        $data = $request->input();
+        dd($data);
 
     }
 

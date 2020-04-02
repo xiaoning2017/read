@@ -229,5 +229,6 @@ return [
         // 'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
 
     ],
+    'pageSize'=>4,//每一页显示2条
 
 ];

@@ -29,4 +29,6 @@ Route::prefix('book')->middleware('LoginMiddle')->group(function(){
     Route::get('create','Book\BookController@create');//作者添加
     Route::get('index','Book\BookController@index');//主页面
     Route::post('search','Book\BookController@search');//搜索分类页面
+    Route::any('writer','Book\BookController@writer');//作者添加页面
+    Route::post('add_do','Book\BookController@add_do');//作者添加跳转
 });

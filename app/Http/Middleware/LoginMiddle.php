@@ -16,7 +16,9 @@ class LoginMiddle
     public function handle($request, Closure $next)
     {
         if(!session('user')){
-            return redirect('/');
+            echo "<script>alert('请先登录或注册，点击返回首页...');location.href='/'</script>";die;
+            // echo"请先登录或注册 正在回到主页";
+            // return redirect('/');
         }
         return $next($request);
     }

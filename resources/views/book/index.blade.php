@@ -96,6 +96,15 @@
 		text-align: center;
 		padding:10px 0px;
 	}
+    .pages{
+        text-align: center;
+		margin: 10px;
+        /* display:inline; */
+        list-style: none;
+        display: inline-block;
+        padding-left: 0;
+        border-radius: 4px
+    }
 	.bookimg img{
 		width: 130px;
 		height: 196px;
@@ -103,6 +112,8 @@
 	#jumpPage{
 		text-align: center;
 		margin: 10px;
+        display:inline;
+        list-style: none;
 	}
 	#jumpPage a{
 		padding:2px 6px;
@@ -158,7 +169,7 @@
 			<a href="#">文学</a>
 			<a href="#">生活</a>
 			<a href="#" >计算机</a>
-			<a href="#" style="color:red">作者申请</a>
+			<a href="{{ url('book/writer' )}}" style="color:red">作者申请</a>
 			<a href="#" style="color:red">作者发布新书</a>
 			<a href="#" style="color:red">励志</a>
 			<a href="#" style="color:red">社会</a>
@@ -175,9 +186,12 @@
 			<span>Search</span>
 			<select name="" id="">
                 <option value="">--请选择</option>
-            @foreach($cateData as $v)	
+                <option value="">文学</option>
+                <option value="">计算机</option>
+                <option value="">生活</option>
+            <!-- @foreach($cateData as $v)	
 				<option value="{{$v->id}}">{{$v->cate_name}}</option>
-            @endforeach
+            @endforeach -->
 			</select>
 			<!-- <input type="text" name="book_name"  value="{{ $query['book_name']??'' }}" placeholder="只能书名"/> -->
             <input type="submit"value="查询">
@@ -203,21 +217,29 @@
                         <table border="1">
                         <tr align="center">
                             <td>书名</td>
-                            <td>售价</td>
+                            <!-- <td>售价</td> -->
                             <td>详情</td>
                             <td>分类名称</td>
+                            <td>作者</td>
                         </tr>
                     @foreach($bookData as $v)
                     <tr align="center">
                         <td>{{$v->book_name}}</td>
-                        <td>{{$v->book_price}}</td>                       
+                        <!-- <td>{{$v->book_price}}</td>                        -->
                         <td>{{$v->book_detail}}</td>                       
                         <td>{{$v->cate_name}}</td>                       
+                        <td>{{$v->writer}}</td>                       
                         <!-- <td><img src="{{ URL::asset('/picture/101.jpg') }}" width="50" height="50"></td>  -->
                         <!-- <td><img src="{{ URL::asset('picture/'.$v->book_img) }}" width="50" height="50"></td>   -->    
                     </tr>
                     @endforeach
                         </table>
+
+                        <!-- <div id="jumpPage"> -->
+                        <div class="pages">
+                        {{$bookData->links()}}
+                        </div>
+                                <!-- </div> -->
 						<!-- <div class="book">
 							<div class="bookimg">
 								<img alt="" src="/picture/101.jpg">
@@ -236,8 +258,8 @@
 								<span>书名：{{$v->book_name}}</span><br/>
 								<span>售价：{{$v->book_price}}</span>
 							</div>
-						</div> -->
-						<!-- <div class="book">
+						</div> 
+						 <div class="book">
 							<div class="bookimg">
 								<img alt="" src="/picture/103.jpg">
 							</div>
@@ -291,12 +313,13 @@
 								<br>
 								<span>售价:xxx</span>
 							</div>
-						</div> -->
+                        </div>
+                        -->
 						<div class="clear"></div>
 						
                         
                     </div>
-                        <div id="jumpPage">
+                        <!-- <div id="jumpPage">
 							<a href="#">上一页</a>
 							<a class="current" href="#">1</a>
 							<a href="#">2</a>
@@ -306,8 +329,9 @@
 							<a href="#">6</a>
 							<a href="#">7</a>
 							<a href="#">下一页</a>
-                        </div>
-				</div>
+                        </div> -->
+                </div>
+                 
 			</div>
 		</div>
 		<div id="bottom">
@@ -315,8 +339,8 @@
 				<img alt="" src="/picture/logo1.jpg">
 			</div>
 			<div id="bottom_right">
-				<span>CONTACT US</span><br/>
-				<span>copyright 2017 &copy; striner All Rights RESERVED</span>
+				<span>Burning</span><br/>
+				<span>If you're the rock , I'll crush against</span>
 			</div>
 		</div>
 	</div>
